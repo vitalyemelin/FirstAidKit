@@ -1,0 +1,27 @@
+package com.test.presentation.base;
+
+import android.arch.lifecycle.ViewModel;
+
+import io.reactivex.disposables.CompositeDisposable;
+
+public abstract class BaseViewModel extends ViewModel {
+
+    private CompositeDisposable compositeDisposable;
+
+    public CompositeDisposable getCompositeDisposable() {
+        if(compositeDisposable == null) {
+            compositeDisposable = new CompositeDisposable();
+        }
+
+        return compositeDisposable;
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        if(compositeDisposable != null
+                && !compositeDisposable.isDisposed()) {
+            compositeDisposable.dispose();
+        }
+    }
+}
