@@ -35,13 +35,9 @@ public class ErrorParserTransformer {
                                 Error error;
                                 if (throwable instanceof HttpException) {
                                     HttpException httpException = (HttpException) throwable;
-                                    //FIXME Fix NPE error
                                     String errorBody = httpException.response().errorBody().string();
                                     E httpError = gson.fromJson(errorBody,
                                             new TypeToken<E>(){}.getType());
-
-                                    //тут проверить параметры в HttpError и решить что делать дальше
-
                                     error = new Error(httpError.getMessage(), ErrorType.SERVER_ERROR);
 
                                 } else if (throwable instanceof SocketTimeoutException) {

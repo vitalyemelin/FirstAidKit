@@ -37,15 +37,12 @@ public class BaseRouter<A extends BaseActivity> {
                     break;
                 }
                 default: {
-                    //снова непредвиденная ошибка
-                    //делаем соответствующий отчет
                     Log.e(activity.getClass().getSimpleName(),
                             "забыл указать тип ошибки " + throwable.toString());
                     showTostError(R.string.error);
                 }
             }
         } else {
-            //отправляет отчет программистам
             Log.e(activity.getClass().getSimpleName(),
                     "ужасная проблема " + throwable.toString());
             showTostError(R.string.error);
