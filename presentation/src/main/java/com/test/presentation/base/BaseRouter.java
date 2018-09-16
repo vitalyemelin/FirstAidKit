@@ -50,7 +50,6 @@ public class BaseRouter<A extends BaseActivity> {
     }
 
     private void showTostError(int messageErrorId) {
-        //показываете пользователю нейтральное сообщение об ошибке
         Toast.makeText(activity, messageErrorId, Toast.LENGTH_SHORT)
                 .show();
     }
